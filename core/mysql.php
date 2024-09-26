@@ -1,5 +1,5 @@
 <?php
-function insere (string$entidade, array $dados) : boolva
+function insere (string $entidade, array $dados) : boolva
 {
     $retorno = false;
     foreach ($dados as $campo => $dados){
