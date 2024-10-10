@@ -1,6 +1,6 @@
 <?php
 
-function conect() : mysqli
+function conecta() : mysqli
 {
     $servidor = 'localhost';
     $banco = 'blog';
@@ -17,7 +17,8 @@ function conect() : mysqli
     }
     return $conexao;
 }
-function desconecta ($conexao)
+
+function desconecta($conexao)
 {
     mysqli_close($conexao);
 }
