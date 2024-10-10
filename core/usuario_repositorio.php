@@ -12,6 +12,7 @@ foreach($_POST as $indice => $dado){
 foreach($_GET as $indice => $dado){
         $$indice = limparDados($dado);
 }
+echo $acao;
 switch($acao){
     case 'insert';
         $dados = [
@@ -46,7 +47,7 @@ switch($acao){
         break;
     case 'login':
         $criterio = [
-            ['email', '-', $email],
+            ['email', '=', $email],
             ['AND', 'ativo', '=', 1]
         ];
 
@@ -55,6 +56,8 @@ switch($acao){
             ['id','nome', 'email', 'senha', 'adm'],
             $criterio
         );
+
+        print_r( $retorno[0]);
         if(count($retorno)>0){
            if(crypt($senha,$salt) == $retorno[0]['senha']){
                 $_SESSION['login']['usuario'] = $retorno[0];
@@ -110,7 +113,7 @@ switch($acao){
             $criterio
         );
 
-        header ('Location: ../usuarios.php');
+       header ('Location: ../usuarios.php');
         exit;
         break;   
 }
